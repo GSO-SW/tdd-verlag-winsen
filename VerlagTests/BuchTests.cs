@@ -28,9 +28,14 @@ namespace VerlagTests
 		public void Buch_KeineAuflageEntsprichtErsterAuflage()
 		{
 			//Arrange
+			string autor = "Winsen";
+			string titel = "Titel";
 
+			
 			//Act 
-			Buch b = new Buch("autor", "titel");
+			Buch b = new Buch(autor, titel);
+
+			
 
 			//Assert
 			Assert.AreEqual(1, b.Auflage);
@@ -104,6 +109,7 @@ namespace VerlagTests
 		{
 			//Act
 			Buch b = new Buch(unerlaubtesZeichen, "titel");
+
 		}
 	}
 }
