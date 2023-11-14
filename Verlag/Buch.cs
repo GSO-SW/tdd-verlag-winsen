@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,15 +31,15 @@ namespace Verlag
 
         public Buch(string autor, string titel)
         {
-           // if 
-           // {
-           //     throw new Exception("Ungültiges Zeichen");
-           // }
-           // else
-            //   {
-            //    this.autor = autor;
+            if (autor.Contains("#") || autor.Contains(";") || autor.Contains("§") || autor.Contains("%")|| autor is null)
+            {
+                throw new ArgumentException("Ungültiges Zeichen");
+            }
+            else
+            {
+                this.autor = autor;
 
-           // }
+            }
             this.titel = titel;
             this.auflage = 1;
         }
