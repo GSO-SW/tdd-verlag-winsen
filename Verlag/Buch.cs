@@ -12,6 +12,8 @@ namespace Verlag
         private string autor;
         private string titel;
         private int auflage;
+        private string isbn;
+        private string isbn10;
 
         public Buch(string autor, string titel, int auflage)
         {
@@ -74,7 +76,18 @@ namespace Verlag
             }
         }
 
+        public string ISBN
+        {
+            get { return isbn; }
 
+            set { isbn = value; }
+        }
+
+        public string ISBN10
+        {
+            get { return isbn10; }
+            set { isbn10 = value; }
+        }
 
     }
 }

@@ -128,7 +128,7 @@ namespace VerlagTests
 			b.ISBN = isbn;
 
 			//Assert
-			Assert.AreEqual(isbn, ISBN);
+			Assert.AreEqual(isbn, b.ISBN);
 
 		}
 
@@ -137,38 +137,36 @@ namespace VerlagTests
 		public void ISBN_PruefzifferSollErgaenztWerden()
 		{
 			//Arrange
-            string autor = "Winsen";
-            string titel = "titel";
 			string isbnOhnePrueziffer = "978-377043614";
             string isbnMitPruefziffer = "978-3770436149";
 
-            Buch b = new Buch(autor, titel);
+            Buch b = new Buch("Winsen", "titel");
 
 			//Act
 			b.ISBN = isbnOhnePrueziffer;
 
 			//Assert
-			Assert.AreEqual(isbnMitPruefziffer, ISBN);
+			Assert.AreEqual(isbnMitPruefziffer, b.ISBN);
 
 		}
 
 
 		[TestMethod]
-		public void ISBN_SollInISBN10Errechnetwerden()
+		public void ISBN10_SollAusISBNErrechnetWerden()
 		{
-            //Arrange
-            string autor = "Winsen";
-            string titel = "titel";
-			string isbn = "978-3770436149";
-            Buch b = new Buch(autor, titel);
+			//Arrange
+            Buch b = new Buch("Winsen", "titel");
+			string isbn13 = "978-3770436149";
+			string isbn10 = "3770436067";
 
 			//Act
-			b.ISBN10Errechnen(isbn);
+			b.ISBN = isbn13;
+			string result = b.ISBN10;
 
 			//Assert
-			Assert.AreEqual("3770436067", b.ISBN10);
+			Assert.AreEqual(isbn10, result);
 
-        }
+		}
 
 
 	}
