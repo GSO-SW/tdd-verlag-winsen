@@ -111,5 +111,44 @@ namespace VerlagTests
 			Buch b = new Buch(unerlaubtesZeichen, "titel");
 
 		}
-	}
+
+
+
+		[TestMethod]
+		public void Buch_ISBN13WirdErgänzt()
+		{
+			//Arrange
+			string autor = "Winsen";
+			string titel = "titel";
+			string isbn = "978-377043614";
+
+
+			//Act
+			Buch b = new Buch(autor, titel, isbn);
+
+
+			//Assert
+			Assert.AreEqual(autor, b.Autor);
+			Assert.AreEqual(titel, b.Titel);
+			Assert.AreEqual(isbn, b.Isbn);
+
+		}
+
+
+		[TestMethod]
+		public void Buch_Prüfzifferwirdergänzt()
+		{
+			//Arrange
+            string autor = "Winsen";
+            string titel = "titel";
+            string isbn = "978-377043614";
+
+            //Act
+            Buch b = new Buch(autor, titel, isbn);
+
+			//Assert
+
+        }
+
+    }
 }
