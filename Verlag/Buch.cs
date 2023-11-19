@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +15,7 @@ namespace Verlag
         private int auflage;
         private string isbn;
         private string isbn10;
-
+       
         public Buch(string autor, string titel, int auflage)
         {
             if (auflage < 1)
@@ -33,19 +34,18 @@ namespace Verlag
 
         public Buch(string autor, string titel)
         {
-            if (autor.Contains("#") || autor.Contains(";") || autor.Contains("§") || autor.Contains("%")|| autor is null)
-            {
-                throw new ArgumentException("Ungültiges Zeichen");
-            }
-            else
-            {
-                this.autor = autor;
+            char[] unerlaubtezeichen = {'#', ';', '§', '%',};
 
+            if (autor.Any(c => unerlaubtezeichen.Contains(c))|| String.IsNullOrEmpty(autor))
+            {
+                throw new ArgumentException("Unerlaubtes Zeichen im Autorenfeld");
             }
+            
+  
             this.titel = titel;
             this.auflage = 1;
         }
-
+         
         public string Autor
         {
             get { return autor; }
@@ -80,7 +80,8 @@ namespace Verlag
         {
             get { return isbn; }
 
-            set { isbn = value; }
+            set
+            { isbn = value; }
         }
 
         public string ISBN10
