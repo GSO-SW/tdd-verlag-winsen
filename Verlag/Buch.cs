@@ -40,8 +40,12 @@ namespace Verlag
             {
                 throw new ArgumentException("Unerlaubtes Zeichen im Autorenfeld");
             }
-            
-  
+            else
+            {
+                this.autor = autor;
+            }
+ 
+ 
             this.titel = titel;
             this.auflage = 1;
         }
