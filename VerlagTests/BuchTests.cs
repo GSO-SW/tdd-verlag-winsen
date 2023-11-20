@@ -117,11 +117,9 @@ namespace VerlagTests
 		[TestMethod]
 		public void ISBN_KannErgaenztWerden()
 		{
-			//Arrange
-			string autor = "Winsen";
-			string titel = "titel";
-			string isbn = "978-377043614";
-            Buch b = new Buch(autor, titel);
+            //Arrange
+            Buch b = new Buch("autor", "titel");
+            string isbn = "978-3-431-07055-2";
 
 
 			//Act
@@ -132,6 +130,7 @@ namespace VerlagTests
 
 		}
 
+		
 
 		[TestMethod]
 		public void ISBN_PruefzifferSollErgaenztWerden()
@@ -156,11 +155,11 @@ namespace VerlagTests
 		{
 			//Arrange
             Buch b = new Buch("Winsen", "titel");
-			string isbn13 = "978-3770436149";
+			string isbn = "978-3-431-07055-2";
 			string isbn10 = "3770436067";
 
 			//Act
-			b.ISBN = isbn13;
+			b.ISBN = isbn;
 			string result = b.ISBN10;
 
 			//Assert
@@ -168,6 +167,21 @@ namespace VerlagTests
 
 		}
 
+        [TestMethod]
+        public void ISBN13_SollAusISBNErrechnetWerden()
+        {
+			//Arrange
+            Buch b = new Buch("Winsen", "titel");
+			string isbn = "978-3-431-07055-2";
+			string isbn13 = "9783431070552";
 
-	}
+			//Act
+			b.ISBN = isbn;
+			string result = b.ISBN13;
+
+			//Assert
+			Assert.AreEqual(isbn13, result);
+        }
+
+    }
 }
