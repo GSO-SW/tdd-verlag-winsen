@@ -6,8 +6,6 @@
         private string titel;
         private int auflage;
         private string isbn;
-        private string isbn10;
-        private string isbn13;
 
         public Buch(string autor, string titel, int auflage)
         {
@@ -88,7 +86,6 @@
         public string ISBN10
         {
             get { return isbn10; }
-            set { isbn10 = value; }
         }
 
         public string ISBN13
@@ -105,11 +102,6 @@
                 }
 
                 return result;
-            }
-
-            set
-            {
-                isbn13 = value;
             }
         }
     }
